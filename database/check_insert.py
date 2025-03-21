@@ -1,5 +1,5 @@
-from database.database import SessionLocal
-from database.models import Algorithm
+from database import SessionLocal
+from models import Algorithm
 
 def check_algorithms():
     db = SessionLocal()
