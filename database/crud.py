@@ -1,0 +1,1 @@
+#functii pentru gestionarea datelor (insert, update, delete, get)
