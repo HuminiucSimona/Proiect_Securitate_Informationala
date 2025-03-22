@@ -1,20 +1,19 @@
-from database import SessionLocal
-from models import Algorithm
+from crud import create_framework, get_framework, get_frameworks, update_framework, delete_framework
+from database import get_db
 
-def check_algorithms():
-    db = SessionLocal()
-    try:
-        algorithms = db.query(Algorithm).all()
-        if algorithms:
-            print("Algoritmii existenți în baza de date:")
-            for algo in algorithms:
-                print(f"ID: {algo.id}, Name: {algo.name}")
-        else:
-            print("Nu există algoritmi în baza de date.")
-    except Exception as e:
-        print(f"Eroare la interogare: {e}")
-    finally:
-        db.close()
+db = next(get_db())
+#new_framework = create_framework(db, "OpenSSL2")
 
-if __name__ == "__main__":
-    check_algorithms()
+updated_framework = update_framework(db, 4, "OpenSSL2")
+#print(updated_framework)
+
+framework = get_framework(db, 3)
+print(framework)
+
+frameworks = get_frameworks(db)
+for f in frameworks:
+    print(f)
+
+# Ștergere framework
+#delete_framework = delete_framework(db, 1)
+#print(f"Deleted: {delete_framework}")
